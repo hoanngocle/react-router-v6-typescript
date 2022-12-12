@@ -5,19 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Invoices from './pages/Invoices';
+import NotFound from './pages/NotFound';
+import Expenses from './pages/Expenses';
+import Invoice from './pages/Invoice';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App />}>
-        <Route path='invoices' element={<Invoices />}></Route>
-        <Route path='expenses' element={<Invoices />}></Route>
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="invoices" element={<Invoices />}>
+            <Route index element={<h2 style={{ padding: '1rem' }}>Please select an invoice</h2>} />
+            <Route path=":invoiceId" element={<Invoice />} />
+          </Route>
+          <Route path="expenses" element={<Expenses />} />
+          {/* No other route match */}
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
