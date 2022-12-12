@@ -8,6 +8,7 @@ import Invoices from './pages/Invoices';
 import NotFound from './pages/NotFound';
 import Expenses from './pages/Expenses';
 import Invoice from './pages/Invoice';
+import NewInvoice from './pages/NewInvoice';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route path="invoices" element={<Invoices />}>
             <Route index element={<h2 style={{ padding: '1rem' }}>Please select an invoice</h2>} />
             <Route path=":invoiceId" element={<Invoice />} />
+            <Route path="new" element={<NewInvoice />} />
           </Route>
           <Route path="expenses" element={<Expenses />} />
           {/* No other route match */}
